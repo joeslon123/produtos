@@ -24,12 +24,25 @@ private PATH = 'categorias/';
 
   }
 
-  save() {
+  save(categoriaForm:any) {
+    const categoria = {
+      name:categoriaForm.name,
+      description:categoriaForm.description
+    }
+
+    if (categoriaForm.key){
+      // editar um existente
+
+    } else{
+      //salvar novo
+      this.db.list(this.PATH).push(categoria);
+    }
+
 
   }
 
-  remove(){
-
+  remove(categoriaKey:string){
+    this.db.list(this.PATH).remove(categoriaKey)
   }
 
 }
