@@ -20,8 +20,13 @@ private PATH = 'categorias/';
       })
   }
 
-  get() {
+  get(categoriaKey:string) {
+    return this.db.object(this.PATH + categoriaKey)
+    .snapshotChanges()
+    .map(m => {
+      return {key: m.key, ...m.payload.val()}
 
+    });
   }
 
   save(categoriaForm:any) {
@@ -32,7 +37,8 @@ private PATH = 'categorias/';
 
     if (categoriaForm.key){
       // editar um existente
-
+      this.db.list(this.PATH)
+        .update(categoriaForm.key, categoria);
     } else{
       //salvar novo
       this.db.list(this.PATH).push(categoria);

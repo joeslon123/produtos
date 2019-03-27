@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoriasProvider } from './../../../providers/categorias/categorias';
+import { Subscriber } from 'rxjs';
 
 
 
@@ -22,9 +23,16 @@ export class CategoriasEditaPage {
               private toast: ToastController) {
 
       this.categoria = this.navParams.data.categoriakey || {}
+      // console.log(this.categoria);
       this.SetupPageTitle();
       this.createForm();
 
+      const subscribe = this.categoriasProvider.get(this.navParams.data.categoriakey).subscribe(categoriaData => {
+        subscribe.unsubscribe();
+        this.categoria = categoriaData
+        // console.log(this.categoria);
+        this.createForm();
+      })
   }
 
   private SetupPageTitle(){
