@@ -4,8 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoriasProvider } from './../../../providers/categorias/categorias';
 import { Subscriber } from 'rxjs';
 
-
-
 @IonicPage()
 @Component({
   selector: 'page-categorias-edita',

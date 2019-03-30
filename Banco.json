@@ -1,0 +1,31 @@
+{
+  "categorias" : {
+      "-L0o91uCYzABkQQSHEb4" : {
+        "name" : "Cervejas"
+      },
+      "-L4fx__eoCcOrz7xFXnG" : {
+        "name" : "Refrigerantes"
+      },
+      "-L5sWLlqdjxFeH6a19Q-" : {
+        "name" : "Cafés"
+      },
+      "-L5sWVHz36TpTr8FFPgT" : {
+        "name" : "Milk Shakes"
+      }
+    },
+
+  "Produtos" : {
+      "-L0o91uCYzABkQQSHEb4" : {
+        "name" : "Skol"
+      },
+      "-L4fx__eoCcOrz7xFXnG" : {
+        "name" : "Dolly"
+      },
+      "-L5sWLlqdjxFeH6a19Q-" : {
+        "name" : "Matte Leão"
+      },
+      "-L5sWVHz36TpTr8FFPgT" : {
+        "name" : "Fraputtino"
+      }
+    }
+  }

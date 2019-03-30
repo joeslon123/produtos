@@ -1,23 +1,32 @@
 <ion-header>
-    <ion-navbar color="primary">
-      <ion-title>Lista de Produtos</ion-title>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <ion-title>Lista de Produtos</ion-title>
+  </ion-navbar>
+</ion-header>
 
-  <ion-content padding>
 
+<ion-content padding>
     <ion-list>
-      <ion-item-sliding>
-        <ion-item>
-          <h3>Primeiro Produto</h3>
-          <button ion-button color="secundary"><ion-icon name="create">Editar</ion-icon></button>
-          <button ion-button color="danger"><ion-icon name="trash">Excluir</ion-icon></button>
-        </ion-item>
-      </ion-item-sliding>
+        <ion-item-sliding *ngFor="let item of produtos | async">
+          <ion-item>
+            <h2>{{ item.data.name }}</h2>
+            <ion-avatar item-start>
+              <img src="{{ item.data.imgUrl }}" class="img-thumbnail" style="max-width: 100px;" [hidden]="item.data.imgUrl == ''" />
+            </ion-avatar>
+            <p class="text-right">{{ item.data.price | currency:'BRL':true }}</p>
+            <p>{{ item.data.categoryName }}</p>
+          </ion-item>
+          <ion-item-options side="left">
+            <button ion-button color="secondary" (click)="editItemProdutos(item)"><ion-icon name="create"></ion-icon>Editar</button>
+          </ion-item-options>
+          <ion-item-options side="right">
+              <button ion-button color="danger" (click)="removeItemProdutos(item.key, item.data.imgUrl != '')"><ion-icon name="trash"></ion-icon>Remover</button>
+          </ion-item-options>
+        </ion-item-sliding>
     </ion-list>
 
-    <ion-fab right bottom>
-        <button ion-fab><ion-icon name="add"></ion-icon></button>
-    </ion-fab>
+      <ion-fab right bottom>
+        <button ion-fab color="secondary" (click)="newItemProdutos()"><ion-icon name="add"></ion-icon></button>
+      </ion-fab>
 
-  </ion-content>
+</ion-content>
