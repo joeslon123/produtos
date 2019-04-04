@@ -14,37 +14,44 @@ import { Observable } from 'rxjs/observable'
 
 export class ProdutosEditaPage {
   title: string;
+  // formulário para a pagina edita.html
   form: FormGroup;
   // para carregar as categorias
   categories: Observable<any[]>;
-
+  // armazenar um produto
   produtos: any;
   hasImg = false;
+  //buscar arquivos do celular
   private file: File = null;
 
   // armazenar uma categoria
   categoriaItem:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-              private formBuilder: FormBuilder, private toast: ToastController,
-              private produtosProvider: ProdutosProvider, private categoriasProvider: CategoriasProvider) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private formBuilder: FormBuilder,
+              private toast: ToastController,
+              private produtosProvider: ProdutosProvider,
+              private categoriasProvider: CategoriasProvider)
+
+{
+                this.SetupPageTitle();
+                //guarda a chave do produto que será editado
                 this.produtos = this.navParams.data.produtoKey|| {};
                 console.log(this.produtos);
-                this.SetupPageTitle();
+                //cria o formulário para jogar
                 this.createForm();
-                //busca as categorias
+                //busca todas as categorias
                 this.loadCategories();
 
                 const subscribe = this.produtosProvider.get(this.navParams.data.produtoKey).subscribe((produtosData: any) => {
                   subscribe.unsubscribe();
                   this.produtos = produtosData;
                   console.log(this.produtos);
-                  this.createForm();
                 });
 
                 // inicia como se não houve imagem ainda...
                 this.hasImg = this.produtos.imgUrl != '';
-
 
   }
 
@@ -55,7 +62,7 @@ export class ProdutosEditaPage {
       this.title="Novo Produto"
     }
 
-}
+  }
 
   private createForm(){
     this.form = this.formBuilder.group({
@@ -70,20 +77,21 @@ export class ProdutosEditaPage {
     })
   }
 
+  //Mensagem que o produto foi salvo.
   onSubmit(){
     if (this.form.valid) {
       this.produtosProvider.save(this.form.value, this.file);
       this.toast.create({
-        message: "Categoria salva com sucesso!!",
+        message: "Produto salvo com sucesso!!",
           duration:3000,
           position: 'bottom'})
           .present();
-      // this.toast.create({ message: 'Categoria salva com sucesso', duration: 3000}).present();
+      // this.toast.create({ message: 'Produto salva com sucesso', duration: 3000}).present();
       this.navCtrl.pop();
     }
   }
 
-  // consulta todas as categorias e carrega em um Observable
+  // consulta todas as categorias e carrega em um Observable   (consulta no banco)
   private loadCategories() {
     this.categories = this.categoriasProvider.getAll();
   }
@@ -121,4 +129,8 @@ export class ProdutosEditaPage {
       this.produtosProvider.removeImgOfProduct(this.form.value.key);
     }
   }
+
+
+
+
 }

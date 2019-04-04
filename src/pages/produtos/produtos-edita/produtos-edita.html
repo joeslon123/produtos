@@ -1,9 +1,11 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Lista de Produtos</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>{{ title }}</ion-title>
   </ion-navbar>
 </ion-header>
 
+
+<ion-content padding>
 <form [formGroup]="form">
   <ion-item>
       <ion-label stacked>Nome</ion-label>
@@ -46,10 +48,11 @@
 </ion-item>
 <ion-item class="form-group" [hidden]="!hasImg">
 <img src="{{ form.controls.imgUrl.value }}" class="img-thumbnail d-block" style="max-width: 100px;" [hidden]="!hasImg" />
-<button class="btn btn-secondary mt-2" type="button" (click)="removeImg()"><i class="fa fa-times" aria-hidden="true"></i> Remover imagem</button>
+<button class="btn btn-secondary mt-2" type="button" (click)="removeImg()"><i class="fa fa-times" aria-hidden="true"></i> Escolha imagem</button>
 </ion-item>
 <div padding>
   <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Salvar</button>
 </div>
 
 </form>
+</ion-content>
