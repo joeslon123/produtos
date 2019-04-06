@@ -57,6 +57,10 @@ save(item: any, file: File) {
   }
 }
 
+
+
+
+
 uploadImg(key: string, file: File) {
   const storageRef = this.fb.storage().ref();              // put(file) adicionando o arquivo
   const uploadTask = storageRef.child(this.PATH_IMG + key).put(file);

@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoriasProvider } from './../../../providers/categorias/categorias';
 import { ProdutosProvider } from './../../../providers/produtos/produtos';
-// import { Subscriber } from 'rxjs';
+import { Subscriber } from 'rxjs';
 import { Observable } from 'rxjs/observable'
 
 @IonicPage()
@@ -77,7 +77,7 @@ export class ProdutosEditaPage {
     })
   }
 
-  //Mensagem que o produto foi salvo.
+  //Salva o produto e mostra a mensagem que o produto foi salvo.
   onSubmit(){
     if (this.form.valid) {
       this.produtosProvider.save(this.form.value, this.file);

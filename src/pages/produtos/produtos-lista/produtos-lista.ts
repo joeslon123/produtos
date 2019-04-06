@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { ProdutosProvider } from './../../../providers/produtos/produtos';
-import { Observable } from 'rxjs/observable'
+import { Observable } from 'rxjs/observable';
 
 
 
