@@ -29,7 +29,7 @@ this.produtos = this.produtosProvider.getAll();
   }
 
   editItemProdutos(produtos:any){
-    this.navCtrl.push('ProdutosEditaPage', { produtokey: produtos.key} )
+    this.navCtrl.push('ProdutosEditaPage', { produtokey: produtos.key} );
 
 
   }

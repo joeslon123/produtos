@@ -83,7 +83,9 @@ uploadImg(key: string, file: File) {
   );
 }
 
+
 remove(produtokey: string, removeImg: boolean) {
+  removeImg=false,
   this.db.list(this.PATH).remove(produtokey).then(() => {
     if (removeImg) {
       this.removeImg(produtokey);

@@ -35,12 +35,18 @@ export class ProdutosEditaPage {
               private categoriasProvider: CategoriasProvider)
 
 {
-                this.SetupPageTitle();
+
+
                 //guarda a chave do produto que será editado
-                this.produtos = this.navParams.data.produtoKey|| {};
-                console.log(this.produtos);
+                this.produtos = this.navParams.data.produtoKey || {};
+                 console.log(this.produtos);
+
+                this.SetupPageTitle();
+
                 //cria o formulário para jogar
                 this.createForm();
+
+
                 //busca todas as categorias
                 this.loadCategories();
 
@@ -56,7 +62,7 @@ export class ProdutosEditaPage {
   }
 
   private SetupPageTitle(){
-    if(this.navParams.data.categoriaKey){
+    if(this.navParams.data.produtoKey){
       this.title="Alterando Produto";
     } else {
       this.title="Novo Produto"
